@@ -1,4 +1,4 @@
-<div>
+# 1. Two Sum
 
 Given an array of integers `nums` and an integer `target`, return _indices of the two numbers such that they add up to `target`_.
 
@@ -35,4 +35,4 @@ Output: [0,1]
 *   -10<sup>9</sup> <= target <= 10<sup>9</sup>
 *   **Only one valid answer exists.**
 
-**Follow-up:** Can you come up with an algorithm that is less than O(n<sup>2</sup>) time complexity?</div>
+**Follow-up:** Can you come up with an algorithm that is less than O(n<sup>2</sup>) time complexity?

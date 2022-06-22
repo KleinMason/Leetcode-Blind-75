@@ -2,11 +2,15 @@ package Two_Sum;
 
 import java.util.HashMap;
 
+/**
+ * NOTE: Use HashMap to instantly check if the 
+ * difference between the target and current number
+ * has been seen before. 
+ * Hashmap will return the index of the difference.
+ */
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        /**
-         * First solution: Accepted
-         */
         HashMap<Integer, Integer> map = new HashMap<>();
         
         for (int i = 0; i < nums.length; i++) {

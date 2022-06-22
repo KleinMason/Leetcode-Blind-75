@@ -3,7 +3,7 @@ package Best_Time_to_Buy_and_Sell_Stock;
 /**
  * NOTE: Track lowest possible buy and highest
  * possible sell **profit**. Modified two-pointer
- * solution.
+ * solution. Sliding window.
  */
 
 public class solution {

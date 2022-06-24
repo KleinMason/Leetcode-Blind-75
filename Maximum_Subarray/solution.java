@@ -7,12 +7,12 @@ package Maximum_Subarray;
 
 public class solution {
     public static int maxSubArray(int[] nums) {
-    int currentMax = 0, maxSoFar = Integer.MIN_VALUE;
-    for (int i : nums) {
-    currentMax = Math.max(i, currentMax + i);
-    maxSoFar = Math.max(maxSoFar, currentMax);
-    }
-    return maxSoFar;
+        int currentMax = 0, maxSoFar = Integer.MIN_VALUE;
+        for (int i : nums) {
+            currentMax = Math.max(i, currentMax + i);
+            maxSoFar = Math.max(maxSoFar, currentMax);
+        }
+        return maxSoFar;
     }
 
     public static void main(String[] args) {

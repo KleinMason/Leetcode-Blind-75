@@ -2,6 +2,7 @@ package Week_1_Sequences;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Stack;
 
 public class solution {
@@ -80,9 +81,29 @@ public class solution {
         for (int num : nums) {
             currentSum += num;
             maxSumSoFar = Math.max(currentSum, maxSumSoFar);
-            if (currentSum < 0) currentSum = 0;
+            if (currentSum < 0)
+                currentSum = 0;
         }
         return maxSumSoFar;
+    }
+
+    // 238. Product of Array Except Self:
+    // https://leetcode.com/problems/product-of-array-except-self/
+    public int[] productExceptSelf(int[] nums) {
+        int[] answer = new int[nums.length];
+        for (int i = 0, tmp = 1; i < nums.length; i++) {
+            answer[i] = tmp;
+            tmp *= nums[i];
+        }
+        for (int i = nums.length - 1, tmp = 1; i >= 0; i--) {
+            answer[i] *= tmp;
+            tmp *= nums[i];
+        }
+        return answer;
+    }
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        return null;
     }
 
 }

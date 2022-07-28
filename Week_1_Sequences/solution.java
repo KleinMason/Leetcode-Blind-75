@@ -1,7 +1,10 @@
 package Week_1_Sequences;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Stack;
 
 public class solution {
@@ -80,9 +83,37 @@ public class solution {
         for (int num : nums) {
             currentSum += num;
             maxSumSoFar = Math.max(currentSum, maxSumSoFar);
-            if (currentSum < 0) currentSum = 0;
+            if (currentSum < 0)
+                currentSum = 0;
         }
         return maxSumSoFar;
+    }
+
+    // 15. 3Sum: https://leetcode.com/problems/3sum/
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] > 0)
+                break;
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
+            int lo = i + 1, hi = nums.length - 1;
+            int target = -nums[i];
+            while (lo < hi) {
+                if (nums[lo] + nums[hi] == target) {
+                    res.add(Arrays.asList(nums[i], nums[lo++], nums[hi--]));
+                    while (lo < hi && nums[lo] == nums[lo - 1])
+                        lo++;
+                    while (lo < hi && nums[hi] == nums[hi + 1])
+                        hi--;
+                } else if (nums[lo] + nums[hi] < target)
+                    lo++;
+                else
+                    hi--;
+            }
+        }
+        return res;
     }
 
 }

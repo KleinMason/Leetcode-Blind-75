@@ -89,31 +89,46 @@ public class solution {
         return maxSumSoFar;
     }
 
-    // 15. 3Sum: https://leetcode.com/problems/3sum/
-    public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (nums[i] > 0)
-                break;
-            if (i > 0 && nums[i] == nums[i - 1])
-                continue;
-            int lo = i + 1, hi = nums.length - 1;
-            int target = -nums[i];
-            while (lo < hi) {
-                if (nums[lo] + nums[hi] == target) {
-                    res.add(Arrays.asList(nums[i], nums[lo++], nums[hi--]));
-                    while (lo < hi && nums[lo] == nums[lo - 1])
-                        lo++;
-                    while (lo < hi && nums[hi] == nums[hi + 1])
-                        hi--;
-                } else if (nums[lo] + nums[hi] < target)
-                    lo++;
-                else
-                    hi--;
-            }
+    // 238. Product of Array Except Self:
+    // https://leetcode.com/problems/product-of-array-except-self/
+    public int[] productExceptSelf(int[] nums) {
+        int[] answer = new int[nums.length];
+        for (int i = 0, tmp = 1; i < nums.length; i++) {
+            answer[i] = tmp;
+            tmp *= nums[i];
         }
-        return res;
+        for (int i = nums.length - 1, tmp = 1; i >= 0; i--) {
+            answer[i] *= tmp;
+            tmp *= nums[i];
+        }
+        return answer;
     }
+
+        // 15. 3Sum: https://leetcode.com/problems/3sum/
+        public List<List<Integer>> threeSum(int[] nums) {
+            List<List<Integer>> res = new ArrayList<>();
+            Arrays.sort(nums);
+            for (int i = 0; i < nums.length - 2; i++) {
+                if (nums[i] > 0)
+                    break;
+                if (i > 0 && nums[i] == nums[i - 1])
+                    continue;
+                int lo = i + 1, hi = nums.length - 1;
+                int target = -nums[i];
+                while (lo < hi) {
+                    if (nums[lo] + nums[hi] == target) {
+                        res.add(Arrays.asList(nums[i], nums[lo++], nums[hi--]));
+                        while (lo < hi && nums[lo] == nums[lo - 1])
+                            lo++;
+                        while (lo < hi && nums[hi] == nums[hi + 1])
+                            hi--;
+                    } else if (nums[lo] + nums[hi] < target)
+                        lo++;
+                    else
+                        hi--;
+                }
+            }
+            return res;
+        }
 
 }

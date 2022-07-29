@@ -1,17 +1,19 @@
 package Week_1_Sequences;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
+
+import javax.print.attribute.ResolutionSyntax;
 
 public class solution {
     public static void main(String[] args) {
-        int[] arr = {1,-1,-1,0};
-        List<List<Integer>> taco = threeSum(arr);
-        System.out.println(taco);
+
     }
 
     // 1. Two Sum: https://leetcode.com/problems/two-sum/
@@ -107,7 +109,7 @@ public class solution {
     }
 
     // 15. 3Sum: https://leetcode.com/problems/3sum/
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
@@ -130,6 +132,44 @@ public class solution {
             }
         }
         return res;
+    }
+
+    // 56. Merge Intervals: https://leetcode.com/problems/merge-intervals/
+    public int[][] merge(int[][] intervals) {
+        if (intervals.length <= 1)
+            return intervals;
+        List<int[]> res = new ArrayList<>();
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        int lo = intervals[0][0], hi = intervals[0][1];
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] <= hi) {
+                hi = Math.max(intervals[i][1], hi);
+            } else {
+                res.add(new int[] { lo, hi });
+                lo = intervals[i][0];
+                hi = intervals[i][1];
+            }
+        }
+        res.add(new int[] { lo, hi });
+        return res.toArray(new int[0][]);
+    }
+
+    // 49. Group Anagrams: https://leetcode.com/problems/group-anagrams/
+    public List<List<String>> groupAnagrams(String[] strs) {
+        if (strs == null || strs.length == 0)
+            return new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        for (String s : strs) {
+            char[] ca = new char[26];
+            for (char c : s.toCharArray())
+                ca[c - 'a']++;
+            String keyString = String.valueOf(ca);
+            if (!map.containsKey(keyString))
+                map.put(keyString, new ArrayList<>());
+            map.get(keyString).add(s);
+        }
+        System.out.println(map.keySet().); 
+        return new ArrayList<>(map.values());
     }
 
 }

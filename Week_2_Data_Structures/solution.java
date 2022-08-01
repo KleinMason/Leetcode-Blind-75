@@ -30,4 +30,15 @@ public class solution {
     //     head.next = newHead;
     //     return _reverseList(next, head);
     // }
+
+    // 141. Linked List Cycle: https://leetcode.com/problems/linked-list-cycle/
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
 }

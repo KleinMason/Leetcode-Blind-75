@@ -1,5 +1,8 @@
 package Week_2_Data_Structures;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class solution {
     public static void main(String[] args) {
 
@@ -70,6 +73,29 @@ public class solution {
                 hi = mid;
         }
         return nums[lo];
+    }
+
+    // 424. Longest Repeating Character Replacement: https://leetcode.com/problems/longest-repeating-character-replacement/
+    public int characterReplacement(String s, int k) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int res = 0, l = 0, maxFrequency = 0;
+        for (int r = 0; r < s.length(); r++) {
+            char ch = s.charAt(r);
+            if (!map.containsKey(ch)) {
+                map.put(ch, 0);
+            }
+            map.put(ch, map.get(ch) + 1);
+            maxFrequency = Math.max(maxFrequency, map.get(ch));
+            int windowLength = r - l + 1;
+            if (windowLength - maxFrequency > k) {
+                char remove = s.charAt(l);
+                map.put(remove, map.get(remove) - 1);
+                l++;
+                windowLength = r - l + 1;
+            }
+            res = Math.max(maxFrequency, windowLength);
+        }
+        return res;
     }
     
 }

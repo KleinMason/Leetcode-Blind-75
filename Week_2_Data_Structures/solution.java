@@ -41,4 +41,21 @@ public class solution {
         }
         return false;
     }
+
+    // 11. Container With Most Water: https://leetcode.com/problems/container-with-most-water/
+    public int maxArea(int[] height) {
+        int maxVolume = 0, lo = 0, hi = height.length - 1;
+        while (lo < hi) {
+            int w = Math.min(height[lo], height[hi]);
+            int l = hi - lo;
+            int area = w * l;
+            maxVolume = Math.max(maxVolume, area);
+            if (height[lo] > height[hi])
+                hi--;
+            else 
+                lo++;
+        }
+        return maxVolume;
+    }
+
 }
